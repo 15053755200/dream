@@ -1,10 +1,3 @@
 spring:
-  datasource:
-    username: root
-    url: jdbc:mysql://localhost:3306/dream?serverTimezone=UTC
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  type-aliases-package: com.ming.dream.dao
+  profiles:
+    active: dev

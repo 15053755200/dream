@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dream?serverTimezone=UTC
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# mybatis整合
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.ming.dream.dao
+
+
+# 配置pagehelper参数
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

@@ -1,5 +1,8 @@
 package com.ming.dream.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.ming.dream.bean.PageInfo;
 import com.ming.dream.enity.UserEntity;
 import com.ming.dream.dao.UserDao;
 import com.ming.dream.serviice.UserService;
@@ -21,12 +24,14 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/selectUser")
-    public String selectUser(){
+    public PageInfo selectUser(){
+        //pageNum:表示第几页  pageSize:表示一页展示的数据
+        PageHelper.startPage(0,3);
         List<UserEntity> userEntities = userService.queryUserList();
-        for (UserEntity user : userEntities) {
-            System.out.println(user);
-        }
-        return "select success == SpringBoot 2.X整合Mybatis成功！";
+        //将查询到的数据封装到PageInfo对象
+        PageInfo<UserEntity> pageInfo = new PageInfo<>();
+        pageInfo.setList(userEntities);
+        return pageInfo;
     }
 
 }
